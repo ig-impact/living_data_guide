@@ -1,0 +1,20 @@
+project:
+  type: book
+
+book:
+  title: "Living Guide to Data at IMPACT Initiatives"
+  author: "Iyed GHEDAMSI"
+  date: "7/9/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
