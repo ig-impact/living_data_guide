@@ -7,9 +7,10 @@ book:
   date: "7/9/2025"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - chapters/intro.qmd
+    - chapters/01_version_control.qmd
+    - chapters/summary.qmd
+    - chapters/references.qmd
 
 bibliography: references.bib
 

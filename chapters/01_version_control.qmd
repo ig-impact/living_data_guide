@@ -1,0 +1,144 @@
+# Version Control
+
+## Tools
+
+### `git`
+
+#### Introduction
+
+Refer to the [Pro Git book](https://git-scm.com/book/en/v2) for a comprehensive guide to Git.
+
+#### Installation
+
+Refer to [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+For Windows users refer to [gitforwindows](https://gitforwindows.org/)
+
+### Github CLI `gh`
+
+#### Installation
+
+Refer to [GitHub CLI - Installation](https://github.com/cli/cli#installation) 
+
+For Windows users refer to [GitHub CLI for Windows](https://github.com/cli/cli?tab=readme-ov-file#windows)
+
+## Core Concepts
+
+### Branching
+
+For a complete overview of git branching, refer to the [Pro Git book](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell).
+
+For a TLDR:
+
+* **Creating and switch to new branch:**
+
+```sh
+git switch [-c|--create] <branch_name>
+# e.g. git switch -c issue1234
+```
+
+* **Create new branch based on the current commit:**
+```sh
+git branch branch_name
+# e.g. git branch feature/new-feature
+```
+
+* **Create new branch based on a specific commit:**
+```sh
+git branch branch_name commit_hash
+# e.g. git branch main 1a2b3c4d5e6f7g8h9i0j
+```
+* **List all branches *(local and remote)*:**
+
+```sh
+git branch [-a|--all]
+```
+
+* **Show the name of the current branch:**
+```sh
+git branch --show-current
+```
+
+### Merging
+
+For more information refer to the [Pro Git book](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging).
+
+
+* **Merge a branch into your current branch:**
+```sh
+git merge branch_name
+```
+
+* **Edit the merge message:**
+
+```sh
+git merge --edit branch_name
+```
+
+### Issue Tracking
+
+### Pull Requests
+
+### Releasing
+
+```sh
+git tag -a <tag_name> -m "Release message"
+git push origin <tag_name>
+git push --tags
+gh release create <tag_name> --title "<Release Title>" --notes "<Release Notes>"
+```
+
+```sh
+gh pr checkout <pr_number>
+```
+
+## Conventions at IMPACT
+
+### Branching Strategy
+
+```{mermaid}
+---
+config:
+  logLevel: "debug"
+  theme: 'base'
+  gitGraph:
+    rotateCommitLabel: true
+---
+gitGraph
+   commit id: "Initial commit" tag: "v2024.0.0"
+   branch dev
+   checkout dev
+   commit id: "Start feature A"
+   branch feature/feature-a
+   checkout feature/feature-a
+   commit id: "Develop feature A"
+   checkout dev
+   merge feature/feature-a tag: "feature merged"
+   commit id: "Start feature B"
+   branch feature/feature-b
+   checkout feature/feature-b
+   commit id: "Work on feature B"
+   checkout dev
+   merge feature/feature-b tag: "feature merged"
+   branch release/2025.1.0
+   checkout release/2025.1.0
+   commit id: "Finalize release (version bump, changelog)"
+   checkout main
+   merge release/2025.1.0 tag: "v2025.1.0"
+   checkout dev
+   merge release/2025.1.0 tag: "Back-merge release"
+
+   %% Hotfix
+   branch hotfix/2025.1.1
+   checkout hotfix/2025.1.1
+   commit id: "Fix critical bug"
+   checkout main
+   merge hotfix/2025.1.1 tag: "v2025.1.1"
+   checkout dev
+   merge hotfix/2025.1.1 tag: "Back-merge hotfix"
+```
+
+### Github Templates
+#### Issue Template
+#### Feature Request Template
+#### Pull Request Template
