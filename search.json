@@ -4,39 +4,69 @@
     "href": "index.html",
     "title": "Living Guide to Data at IMPACT Initiatives",
     "section": "",
-    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "text": "Preface",
     "crumbs": [
       "Preface"
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
+    "objectID": "chapters/intro.html",
+    "href": "chapters/intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "This is a book created from markdown and executable code.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "2  Summary",
+    "objectID": "chapters/01_version_control.html",
+    "href": "chapters/01_version_control.html",
+    "title": "2  Version Control",
     "section": "",
-    "text": "In summary, this book has no content whatsoever.",
+    "text": "2.1 Tools",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Version Control</span>"
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "chapters/01_version_control.html#tools",
+    "href": "chapters/01_version_control.html#tools",
+    "title": "2  Version Control",
     "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "2.1.1 git\n\n2.1.1.1 Introduction\nRefer to the Pro Git book for a comprehensive guide to Git.\n\n\n2.1.1.2 Installation\nRefer to Getting Started - Installing Git\nFor Windows users refer to gitforwindows\n\n\n\n2.1.2 Github CLI gh\n\n2.1.2.1 Installation\nRefer to GitHub CLI - Installation\nFor Windows users refer to GitHub CLI for Windows",
     "crumbs": [
-      "References"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Version Control</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_version_control.html#core-concepts",
+    "href": "chapters/01_version_control.html#core-concepts",
+    "title": "2  Version Control",
+    "section": "2.2 Core Concepts",
+    "text": "2.2 Core Concepts\n\n2.2.1 Branching\nFor a complete overview of git branching, refer to the Pro Git book.\nFor a TLDR:\n\nCreating and switch to new branch:\n\ngit switch [-c|--create] &lt;branch_name&gt;\n# e.g. git switch -c issue1234\n\nCreate new branch based on the current commit:\n\ngit branch branch_name\n# e.g. git branch feature/new-feature\n\nCreate new branch based on a specific commit:\n\ngit branch branch_name commit_hash\n# e.g. git branch main 1a2b3c4d5e6f7g8h9i0j\n\nList all branches (local and remote):\n\ngit branch [-a|--all]\n\nShow the name of the current branch:\n\ngit branch --show-current\n\n\n2.2.2 Merging\nFor more information refer to the Pro Git book.\n\nMerge a branch into your current branch:\n\ngit merge branch_name\n\nEdit the merge message:\n\ngit merge --edit branch_name\n\n\n2.2.3 Issue Tracking\n\n\n2.2.4 Pull Requests\n\n\n2.2.5 Releasing\ngit tag -a &lt;tag_name&gt; -m \"Release message\"\ngit push origin &lt;tag_name&gt;\ngit push --tags\ngh release create &lt;tag_name&gt; --title \"&lt;Release Title&gt;\" --notes \"&lt;Release Notes&gt;\"\ngh pr checkout &lt;pr_number&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Version Control</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/01_version_control.html#conventions-at-impact",
+    "href": "chapters/01_version_control.html#conventions-at-impact",
+    "title": "2  Version Control",
+    "section": "2.3 Conventions at IMPACT",
+    "text": "2.3 Conventions at IMPACT\n\n2.3.1 Branching Strategy\n\n\n\n\n\n---\nconfig:\n  logLevel: \"debug\"\n  theme: 'base'\n  gitGraph:\n    rotateCommitLabel: true\n---\ngitGraph\n   commit id: \"Initial commit\" tag: \"v2024.0.0\"\n   branch dev\n   checkout dev\n   commit id: \"Start feature A\"\n   branch feature/feature-a\n   checkout feature/feature-a\n   commit id: \"Develop feature A\"\n   checkout dev\n   merge feature/feature-a tag: \"feature merged\"\n   commit id: \"Start feature B\"\n   branch feature/feature-b\n   checkout feature/feature-b\n   commit id: \"Work on feature B\"\n   checkout dev\n   merge feature/feature-b tag: \"feature merged\"\n   branch release/2025.1.0\n   checkout release/2025.1.0\n   commit id: \"Finalize release (version bump, changelog)\"\n   checkout main\n   merge release/2025.1.0 tag: \"v2025.1.0\"\n   checkout dev\n   merge release/2025.1.0 tag: \"Back-merge release\"\n\n   %% Hotfix\n   branch hotfix/2025.1.1\n   checkout hotfix/2025.1.1\n   commit id: \"Fix critical bug\"\n   checkout main\n   merge hotfix/2025.1.1 tag: \"v2025.1.1\"\n   checkout dev\n   merge hotfix/2025.1.1 tag: \"Back-merge hotfix\"\n\n\n\n\n\n\n\n\n2.3.2 Github Templates\n\n2.3.2.1 Issue Template\n\n\n2.3.2.2 Feature Request Template\n\n\n2.3.2.3 Pull Request Template",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Version Control</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/summary.html",
+    "href": "chapters/summary.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
     ]
   }
 ]
