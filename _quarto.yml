@@ -1,5 +1,7 @@
 project:
   type: book
+  resources:
+    - staticwebapp.config.json
 
 book:
   title: "Living Guide to Data at IMPACT Initiatives"
